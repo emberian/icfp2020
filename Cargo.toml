@@ -1,0 +1,51 @@
+[package]
+name = "embershot"
+version = "0.1.0"
+authors = ["ember arlynx <ember@lunar.town>"]
+edition = "2018"
+license = "Apache-2.0 OR MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+
+
+[profile.dev]
+opt-level = 1
+debug = true
+
+[dependencies]
+# "vital"
+thread_local = "*"
+backtrace = "*"
+num = "*"
+fnv = "*"
+arc-swap = { version = "*", features = ["weak"] }
+incinerator = { path = "src/incinerator" }
+# "useful"
+illicit = "*"
+serde = "*"
+serde_json = { version = "*", features = ["unbounded_depth"] }
+serde_stacker = "*"
+# "nice to have"
+smallvec = { version = "*", features = ["union"] }
+either = "*"
+joinery = "*"
+eyre = "*"
+tracing = "*"
+tracing-subscriber = "*"
+tracing-error = "*"
+rustyline = "*"
+once_cell="*"
+thiserror = "*"
+
+[dev-dependencies]
+quickcheck = "*"
+quickcheck_macros = "*"
+
+[profile.dev.package.backtrace]
+opt-level = 3
+
+[workspace]
+members = ["src/incinerator"]
